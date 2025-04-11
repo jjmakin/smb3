@@ -1,5 +1,7 @@
 # smb3
-Disassembly of Super Mario Bros 3
+Disassembly of Super Mario Bros 3 - Recreating Grass Land's map to match the artwork on the box
+
+![Grass land beta](https://jarrodmakin.com/images/SMB3-W1-Beta.png)
 
 Specifically for use with cc65 (https://github.com/cc65/cc65).
 

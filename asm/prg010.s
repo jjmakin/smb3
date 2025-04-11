@@ -1661,17 +1661,17 @@ PRG010_C7B2:
 PRG010_C7BA:
 	JMP WorldMap_UpdateAndDraw	 ; Update and draw map and don't come back
 
-	; Indexed by value from FortressFX_Wx
+	; I don't understand
 	; 		        0    1    2    3    4    5    6    7    8    9    A    B    C    D    E    F   10
 FortressFX_VAddrH:	.byte $29, $2A, $2A, $29, $29, $29, $29, $29, $29, $28, $29, $29, $29, $29, $29, $29, $29
-FortressFX_VAddrL:	.byte $48, $50, $12, $4C, $06, $96, $86, $8E, $9A, $92, $8A, $1A, $CE, $10, $52, $98, $CA
+FortressFX_VAddrL:	.byte $0A, $50, $12, $4C, $06, $96, $86, $8E, $9A, $92, $8A, $1A, $CE, $10, $52, $98, $CA
 
 	; Indexed by value from FortressFX_Wx
 	; Stores the column index for Map_Completions followed by which
 	; bit of Map_Completions is to be set to "clear" whatever lock
 	; is now busted or bridge constructed...
 FortressFX_MapCompIdx:
-	.byte $04, $10	; 0
+	.byte $05, $20	; 0 - First value clear, second value - not a clue
 	.byte $08, $01	; 1
 	.byte $09, $02	; 2
 	.byte $16, $10	; 3
@@ -1691,9 +1691,9 @@ FortressFX_MapCompIdx:
 
 	; Indexed by value from FortressFX_Wx
 	; Patterns to overwrite to cause the disappearance of a lock
-	; or creation of a bridge, whatever is appropriate
+	; or creation of a bridge, whatever is appropriate. Quarter tiles
 FortressFX_Patterns:
-	.byte $FE, $C0, $FE, $C0	; 0
+	.byte $FE, $FE, $E1, $E1	; 0 W1, blank blank horz horz
 	.byte $FE, $C0, $FE, $C0	; 1
 	.byte $FE, $FE, $E1, $E1	; 2
 	.byte $FE, $C0, $FE, $C0	; 3
@@ -1714,16 +1714,16 @@ FortressFX_Patterns:
 	; Indexed by value from FortressFX_Wx
 	; The related "row" for the FortressFX_MapLocation
 FortressFX_MapLocationRow:
-	.byte $50, $90, $80, $50, $40, $60, $60, $60, $60, $20, $60, $40, $70, $40, $50, $60, $70
+	.byte $40, $90, $80, $50, $40, $60, $60, $60, $60, $20, $60, $40, $70, $40, $50, $60, $70
 
 	; Indexed by value from FortressFX_Wx
 	; Selects location of tile to bust out
 	; Lower 4 bits are the "screen", upper 4 bits are the column
 FortressFX_MapLocation:
-	.byte $40, $80, $90, $61, $31, $B0, $30, $71, $D0, $91, $52, $D0, $71, $80, $91, $C2, $53
+	.byte $50, $80, $90, $61, $31, $B0, $30, $71, $D0, $91, $52, $D0, $71, $80, $91, $C2, $53
 
 FortressFX_MapTileReplace:
-	.byte $46, $46, $45, $46, $45, $B3, $B3, $DA, $DA, $B3, $45, $46, $45, $46, $45, $46, $45
+	.byte $45, $46, $45, $46, $45, $B3, $B3, $DA, $DA, $B3, $45, $46, $45, $46, $45, $46, $45
 
 	; Defines slots for post-Mini-Fortress events; since this is looked up
 	; by an index table (FortressFXBase_ByWorld), there's no need for this
